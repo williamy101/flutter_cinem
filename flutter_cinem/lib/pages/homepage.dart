@@ -23,10 +23,10 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 49, 82, 87),
+      backgroundColor: Color.fromARGB(255, 22, 33, 35),
       appBar: AppBar(
         toolbarHeight: 100,
-        backgroundColor: const Color.fromARGB(255, 49, 82, 87),
+        backgroundColor: Color.fromARGB(255, 22, 33, 35),
         elevation: 0,
         title: Container(
           margin: const EdgeInsets.only(left: 10),
@@ -111,7 +111,7 @@ class _HomepageState extends State<Homepage> {
                     padding: const EdgeInsets.all(1.0),
                     child: Material(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: const Color.fromARGB(255, 80, 122, 128),
+                      color: Color.fromARGB(255, 62, 91, 95),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: const <Widget>[
@@ -143,7 +143,7 @@ class _HomepageState extends State<Homepage> {
           const _ItemTitle(title: 'Playing Now'),
           Container(
             margin: const EdgeInsets.only(left: 20.0),
-            height: 280,
+            height: 220,
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
@@ -152,6 +152,8 @@ class _HomepageState extends State<Homepage> {
                   _ItemsNowCinemas(movieModel: MovieModel.listMovie[i]),
             ),
           ),
+          const SizedBox(height: 20.0),
+          const _ItemTitle(title: 'Promo'),
         ],
       ),
     );
