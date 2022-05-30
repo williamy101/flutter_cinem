@@ -1,13 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
+// ignore: import_of_legacy_library_into_null_safe
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_cinem/bloc/moviebloc/movie_bloc.dart';
 import 'package:flutter_cinem/model/movie.dart';
 import 'package:flutter_cinem/pages/detailspage.dart';
-import 'package:flutter_cinem/widgets/widget.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_cinem/widgets/customText.dart';
+
+import '../bloc/moviebloc/movie_bloc.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -23,32 +23,34 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 49, 82, 87),
+      backgroundColor: const Color.fromARGB(255, 49, 82, 87),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 49, 82, 87),
+        toolbarHeight: 100,
+        backgroundColor: const Color.fromARGB(255, 49, 82, 87),
         elevation: 0,
         title: Container(
           margin: const EdgeInsets.only(left: 10),
-          child: Text(
+          child: const Text(
             'Hello William',
             style: TextStyle(fontFamily: 'Poppins'),
           ),
         ),
         actions: [
           Container(
-            margin: EdgeInsets.only(top: 15, right: 20),
-            child: CircleAvatar(
+            margin: const EdgeInsets.only(top: 30, right: 30),
+            child: const CircleAvatar(
+              radius: 30,
               backgroundImage: AssetImage('assets/images/avatar.png'),
             ),
           )
         ],
         flexibleSpace: Container(
-          margin: const EdgeInsets.only(top: 50, left: 20),
+          margin: const EdgeInsets.only(top: 90, left: 20),
           child: Row(children: <Widget>[
             Flexible(
               flex: 1,
               child: Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.location_on_outlined,
                     color: Colors.white,
@@ -58,14 +60,14 @@ class _HomepageState extends State<Homepage> {
             ),
             Flexible(
                 flex: 6,
-                child: Container(
+                child: SizedBox(
                   height: 20,
                   width: 100,
                   child: DropdownButton<String>(
                     underline: Container(
                       color: Colors.transparent,
                     ),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontFamily: 'Poppins',
                     ),
@@ -83,7 +85,7 @@ class _HomepageState extends State<Homepage> {
                     },
                     value: value,
                     iconSize: 24,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_drop_down,
                       color: Colors.white,
                     ),
@@ -94,26 +96,26 @@ class _HomepageState extends State<Homepage> {
           ]),
         ),
         bottom: PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
+            preferredSize: const Size.fromHeight(kToolbarHeight),
             child: InkWell(
               onTap: () {},
               child: Container(
-                  height: 30,
-                  margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  height: 40,
+                  margin: const EdgeInsets.only(left: 25.0, right: 25.0),
                   //  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color.fromARGB(255, 121, 171, 179),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Color.fromARGB(255, 49, 82, 87),
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: const Color.fromARGB(255, 80, 122, 128),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          const Padding(
+                        children: const <Widget>[
+                          Padding(
                             padding: EdgeInsets.all(5.0),
                           ),
                           Icon(Icons.search,
@@ -122,7 +124,7 @@ class _HomepageState extends State<Homepage> {
                             child: Text(
                               "Search Movies",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 121, 171, 179),
                                 fontFamily: 'Poppins',
                               ),
                             ),
@@ -134,16 +136,16 @@ class _HomepageState extends State<Homepage> {
             )),
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(vertical: 10.0),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
         children: [
-          SizedBox(height: 20.0),
-          _ItemTitle(title: 'Playing Now'),
+          const SizedBox(height: 20.0),
+          const _ItemTitle(title: 'Playing Now'),
           Container(
-            margin: EdgeInsets.only(left: 20.0),
+            margin: const EdgeInsets.only(left: 20.0),
             height: 280,
             child: ListView.builder(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: MovieModel.listMovie.length,
               itemBuilder: (context, i) =>
@@ -179,7 +181,7 @@ class _HomepageState extends State<Homepage> {
         child: Text(
           item,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w300,
             fontSize: 20,
           ),

@@ -1,11 +1,10 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cinem/bloc/moviebloc/movie_bloc.dart';
 import 'package:flutter_cinem/model/movie.dart';
-import 'package:flutter_cinem/widgets/widget.dart';
+import 'package:flutter_cinem/widgets/customText.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -16,14 +15,16 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final cinemaBloc = BlocProvider.of<MovieBloc>(context);
+    final movieBloc = BlocProvider.of<MovieBloc>(context);
 
     return Scaffold(
       body: Stack(
         children: [
           Container(
-              height: size.height, width: size.width, color: Color(0xff21242C)),
-          Container(
+              height: size.height,
+              width: size.width,
+              color: const Color(0xff21242C)),
+          SizedBox(
             height: size.height * .6,
             width: size.width,
             child: Hero(
@@ -37,9 +38,9 @@ class DetailsPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient:
                           LinearGradient(begin: Alignment.bottomRight, colors: [
-                        Color(0xff21242C),
-                        Color(0xff21242C).withOpacity(.8),
-                        Color(0xff21242C).withOpacity(.1),
+                        const Color(0xff21242C),
+                        const Color(0xff21242C).withOpacity(.8),
+                        const Color(0xff21242C).withOpacity(.1),
                       ]),
                     ),
                   ),
@@ -49,7 +50,7 @@ class DetailsPage extends StatelessWidget {
             top: 250,
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: 80,
                   width: size.width,
                   child: Center(
@@ -61,14 +62,14 @@ class DetailsPage extends StatelessWidget {
                         sigmaY: 10.0,
                       ),
                       child: Container(
-                          padding: EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
                           color: Colors.white.withOpacity(0.3),
-                          child: Icon(Icons.play_arrow_rounded,
+                          child: const Icon(Icons.play_arrow_rounded,
                               color: Colors.white, size: 45)),
                     ),
                   )),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 CustomText(
                   text: movieModel.name,
                   color: Colors.white,
@@ -76,26 +77,26 @@ class DetailsPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 15.0),
+                const SizedBox(height: 15.0),
                 RatingBar.builder(
                     itemSize: 30,
                     initialRating: movieModel.qualification,
-                    itemBuilder: (_, i) =>
-                        Icon(Icons.star_rate_rounded, color: Colors.amber),
+                    itemBuilder: (_, i) => const Icon(Icons.star_rate_rounded,
+                        color: Colors.amber),
                     onRatingUpdate: (_) {}),
-                SizedBox(height: 15.0),
+                const SizedBox(height: 15.0),
                 CustomText(
                     text:
                         ' ${movieModel.year} | ${movieModel.duration} | ${movieModel.genre}',
                     color: Colors.white70),
-                SizedBox(height: 25.0),
-                CustomText(
+                const SizedBox(height: 25.0),
+                const CustomText(
                     text: 'Storyline',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 30),
-                SizedBox(height: 15.0),
-                Container(
+                const SizedBox(height: 15.0),
+                SizedBox(
                   width: size.width * .9,
                   child: Wrap(
                     children: [
@@ -114,7 +115,7 @@ class DetailsPage extends StatelessWidget {
               top: 30,
               child: IconButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: Icon(Icons.arrow_back_ios_new_rounded,
+                  icon: const Icon(Icons.arrow_back_ios_new_rounded,
                       color: Colors.white))),
           Positioned(
             left: 60,
@@ -123,7 +124,7 @@ class DetailsPage extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 // ADD TO BLOC
-                cinemaBloc
+                movieBloc
                     .add(OnSelectMovieEvent(movieModel.name, movieModel.image));
                 //Navigator.push(context, MaterialPageRoute(builder: (_) => BuyTicketPage(titleMovie: movieModel.name, imageMovie: movieModel.image)));
               },
@@ -133,8 +134,8 @@ class DetailsPage extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.amber,
                     borderRadius: BorderRadius.circular(8.0)),
-                child:
-                    CustomText(text: 'Buy Ticket', fontWeight: FontWeight.bold),
+                child: const CustomText(
+                    text: 'Buy Ticket', fontWeight: FontWeight.bold),
               ),
             ),
           ),

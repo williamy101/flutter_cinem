@@ -19,7 +19,7 @@ class MovieModel {
       required this.description});
 
   static List<MovieModel> listMovie = [
-    MovieModel(
+    const MovieModel(
         id: '3',
         name: 'No Time to Die',
         image: 'assets/images/movies/movie1.jpg',
@@ -29,7 +29,7 @@ class MovieModel {
         genre: 'Action',
         description:
             'In "No Time to Die", James Bond (Daniel Craig) finds himself enjoying a well-deserved vacation in Jamaica. However, his peace ends when his CIA friend, Felix Leiter (Jeffrey Wright), seeks him out for a new mission that involves rescuing an important scientist who has been kidnapped.'),
-    MovieModel(
+    const MovieModel(
         id: '4',
         name: 'Free Guy',
         image: 'assets/images/movies/movie2.jpg',
@@ -39,7 +39,7 @@ class MovieModel {
         genre: 'Science fiction',
         description:
             'A bank worker discovers that he is actually a player in a video game.'),
-    MovieModel(
+    const MovieModel(
         id: '6',
         name: 'Shang-Chi',
         image: 'assets/images/movies/movie3.jpg',

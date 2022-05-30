@@ -14,7 +14,7 @@ class MovieState {
       this.date = '0',
       this.time = '00',
       List<String>? selectedSeats})
-      : this.selectedSeats = selectedSeats ?? [];
+      : selectedSeats = selectedSeats ?? [];
 
   MovieState copyWith(
           {String? date,
